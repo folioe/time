@@ -12,7 +12,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             min-height: 100vh;
             background: radial-gradient(ellipse at center, #1a1a2e 0%, #0f0f0f 100%);
@@ -23,30 +23,32 @@
             overflow: hidden;
             position: relative;
         }
+
         /* Animated Background Grid */
-        
         .grid-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px);
             background-size: 50px 50px;
             animation: grid-move 20s linear infinite;
             opacity: 0.3;
         }
-        
+
         @keyframes grid-move {
             0% {
                 transform: translate(0, 0);
             }
+
             100% {
                 transform: translate(50px, 50px);
             }
         }
+
         /* Glowing Orbs */
-        
         .orb {
             position: absolute;
             border-radius: 50%;
@@ -54,7 +56,7 @@
             filter: blur(1px);
             animation: orb-float 8s ease-in-out infinite;
         }
-        
+
         .orb:nth-child(1) {
             width: 200px;
             height: 200px;
@@ -62,7 +64,7 @@
             left: 10%;
             animation-delay: 0s;
         }
-        
+
         .orb:nth-child(2) {
             width: 150px;
             height: 150px;
@@ -70,7 +72,7 @@
             right: 15%;
             animation-delay: 3s;
         }
-        
+
         .orb:nth-child(3) {
             width: 100px;
             height: 100px;
@@ -78,20 +80,21 @@
             left: 60%;
             animation-delay: 6s;
         }
-        
+
         @keyframes orb-float {
             0%,
             100% {
                 transform: translateY(0px) scale(1);
                 opacity: 0.4;
             }
+
             50% {
                 transform: translateY(-30px) scale(1.1);
                 opacity: 0.6;
             }
         }
+
         /* Main Countdown Container */
-        
         .countdown-container {
             position: relative;
             z-index: 10;
@@ -102,19 +105,21 @@
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.1);
             animation: container-entrance 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: transform 0.2s ease-out;
         }
-        
+
         @keyframes container-entrance {
             0% {
                 opacity: 0;
                 transform: scale(0.8) translateY(50px);
             }
+
             100% {
                 opacity: 1;
                 transform: scale(1) translateY(0);
             }
         }
-        
+
         .countdown-title {
             text-align: center;
             font-size: 2rem;
@@ -129,24 +134,25 @@
             text-transform: uppercase;
             letter-spacing: 3px;
         }
-        
+
         @keyframes title-gradient {
             0%,
             100% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
         }
-        
+
         .countdown-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             max-width: 600px;
         }
-        
+
         .time-block {
             position: relative;
             background: linear-gradient(145deg, rgba(30, 30, 45, 0.8), rgba(15, 15, 25, 0.9));
@@ -157,7 +163,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
         }
-        
+
         .time-block::before {
             content: '';
             position: absolute;
@@ -174,35 +180,16 @@
             transition: opacity 0.4s ease;
             z-index: -1;
         }
-        
+
         .time-block:hover::before {
             opacity: 1;
         }
-        
+
         .time-block:hover {
             transform: translateY(-10px) scale(1.05);
             box-shadow: 0 25px 40px rgba(0, 212, 255, 0.3), 0 0 50px rgba(255, 0, 110, 0.2);
         }
-        
-        .time-block::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.3), transparent);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: all 0.6s ease;
-            z-index: -1;
-        }
-        
-        .time-block:hover::after {
-            width: 200px;
-            height: 200px;
-        }
-        
+
         .time-number {
             font-family: 'Orbitron', monospace;
             font-size: 3.5rem;
@@ -214,19 +201,18 @@
             animation: number-pulse 2s ease-in-out infinite;
             position: relative;
         }
-        
+
         @keyframes number-pulse {
             0%,
             100% {
                 opacity: 1;
-                text-shadow: 0 0 20px rgba(0, 212, 255, 0.6), 0 0 40px rgba(0, 212, 255, 0.4);
             }
+
             50% {
                 opacity: 0.8;
-                text-shadow: 0 0 30px rgba(0, 212, 255, 0.8), 0 0 60px rgba(0, 212, 255, 0.6);
             }
         }
-        
+
         .time-label {
             font-size: 0.9rem;
             color: #b8b8b8;
@@ -235,91 +221,8 @@
             font-weight: 500;
             position: relative;
         }
-        
-        .time-label::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
-            border-radius: 2px;
-        }
-        /* Number Change Animation */
-        
-        .number-change {
-            animation: number-flip 0.6s ease-in-out;
-        }
-        
-        @keyframes number-flip {
-            0% {
-                transform: rotateY(0deg) scale(1);
-            }
-            50% {
-                transform: rotateY(90deg) scale(1.1);
-                text-shadow: 0 0 30px rgba(255, 0, 110, 0.8), 0 0 60px rgba(255, 0, 110, 0.6);
-            }
-            100% {
-                transform: rotateY(0deg) scale(1);
-            }
-        }
-        /* Particle Trail Effect */
-        
-        .particle-trail {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #00d4ff;
-            border-radius: 50%;
-            pointer-events: none;
-            animation: particle-trail 1.5s ease-out forwards;
-        }
-        
-        @keyframes particle-trail {
-            0% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(0) translateY(-50px);
-            }
-        }
-        /* Responsive Design */
-        
-        @media (max-width: 768px) {
-            .countdown-container {
-                padding: 3rem 2rem;
-                margin: 1rem;
-            }
-            .countdown-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-            .time-number {
-                font-size: 2.8rem;
-            }
-            .countdown-title {
-                font-size: 1.5rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .countdown-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            .time-block {
-                padding: 2rem 1rem;
-            }
-            .time-number {
-                font-size: 2.5rem;
-            }
-        }
+
         /* Progress Ring */
-        
         .progress-ring {
             position: absolute;
             top: 50%;
@@ -329,7 +232,7 @@
             height: 120%;
             pointer-events: none;
         }
-        
+
         .progress-circle {
             fill: none;
             stroke: rgba(0, 212, 255, 0.3);
@@ -337,17 +240,11 @@
             stroke-dasharray: 283;
             stroke-dashoffset: 283;
             transform-origin: center;
-            animation: progress-rotate 4s linear infinite;
         }
-        
-        @keyframes progress-rotate {
-            0% {
-                transform: rotate(-90deg);
-                stroke-dashoffset: 283;
-            }
-            100% {
-                transform: rotate(270deg);
-                stroke-dashoffset: 0;
+
+        @media (max-width: 768px) {
+            .countdown-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -363,7 +260,6 @@
     <!-- Countdown Container -->
     <div class="countdown-container">
         <h1 class="countdown-title">Time Remaining</h1>
-
         <div class="countdown-grid" id="countdown">
             <div class="time-block">
                 <svg class="progress-ring">
@@ -372,7 +268,6 @@
                 <span class="time-number" id="days">00</span>
                 <span class="time-label">Days</span>
             </div>
-
             <div class="time-block">
                 <svg class="progress-ring">
                     <circle class="progress-circle" cx="50%" cy="50%" r="45"></circle>
@@ -380,7 +275,6 @@
                 <span class="time-number" id="hours">00</span>
                 <span class="time-label">Hours</span>
             </div>
-
             <div class="time-block">
                 <svg class="progress-ring">
                     <circle class="progress-circle" cx="50%" cy="50%" r="45"></circle>
@@ -388,7 +282,6 @@
                 <span class="time-number" id="minutes">00</span>
                 <span class="time-label">Minutes</span>
             </div>
-
             <div class="time-block">
                 <svg class="progress-ring">
                     <circle class="progress-circle" cx="50%" cy="50%" r="45"></circle>
@@ -400,15 +293,8 @@
     </div>
 
     <script>
-        // Set your target date here
         const targetDate = new Date('2025-08-15T14:59:59').getTime();
-
-        let previousValues = {
-            days: 0,
-            hours: 0,
-            minutes: 0,
-            seconds: 0
-        };
+        let previousValues = { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
         function updateCountdown() {
             const now = new Date().getTime();
@@ -420,106 +306,49 @@
                 const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-                const currentValues = {
-                    days,
-                    hours,
-                    minutes,
-                    seconds
-                };
+                const currentValues = { days, hours, minutes, seconds };
 
-                // Update numbers with animation
                 Object.keys(currentValues).forEach(unit => {
                     const element = document.getElementById(unit);
                     const currentValue = currentValues[unit];
-                    const previousValue = previousValues[unit];
-
-                    if (currentValue !== previousValue) {
+                    if (currentValue !== previousValues[unit]) {
                         element.classList.add('number-change');
-                        createParticleTrail(element);
-
-                        setTimeout(() => {
-                            element.classList.remove('number-change');
-                        }, 600);
+                        setTimeout(() => element.classList.remove('number-change'), 600);
                     }
-
                     element.textContent = currentValue.toString().padStart(2, '0');
                 });
 
                 previousValues = currentValues;
-
-                // Update progress rings
                 updateProgressRings(days, hours, minutes, seconds);
             } else {
-                document.querySelector('.countdown-grid').innerHTML = `
-                    <div class="time-block" style="grid-column: 1 / -1;">
+                document.querySelector('.countdown-grid').innerHTML =
+                    `<div class="time-block" style="grid-column: 1 / -1;">
                         <span class="time-number" style="font-size: 2rem;">🎉</span>
                         <span class="time-label">Time's Up!</span>
-                    </div>
-                `;
+                    </div>`;
             }
         }
 
         function updateProgressRings(days, hours, minutes, seconds) {
             const rings = document.querySelectorAll('.progress-circle');
-            const maxValues = [365, 24, 60, 60]; // Max days in year, hours in day, etc.
+            const maxValues = [365, 24, 60, 60];
             const currentValues = [days % 365, hours, minutes, seconds];
-
             rings.forEach((ring, index) => {
                 const progress = (currentValues[index] / maxValues[index]) * 283;
                 ring.style.strokeDashoffset = 283 - progress;
             });
         }
 
-        function createParticleTrail(element) {
-            const rect = element.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-
-            for (let i = 0; i < 6; i++) {
-                setTimeout(() => {
-                    const particle = document.createElement('div');
-                    particle.className = 'particle-trail';
-                    particle.style.left = centerX + (Math.random() - 0.5) * 20 + 'px';
-                    particle.style.top = centerY + (Math.random() - 0.5) * 20 + 'px';
-
-                    const colors = ['#00d4ff', '#ff006e', '#7209b7'];
-                    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-
-                    document.body.appendChild(particle);
-
-                    setTimeout(() => {
-                        if (particle.parentNode) {
-                            particle.parentNode.removeChild(particle);
-                        }
-                    }, 1500);
-                }, i * 100);
-            }
-        }
-
-        // Mouse movement effect
+        // Mouse movement effect (fixed)
         document.addEventListener('mousemove', (e) => {
             const mouseX = (e.clientX / window.innerWidth - 0.5) * 20;
             const mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
-
             document.querySelector('.countdown-container').style.transform =
-                perspective(1000 px) rotateY($ {
-                        mouseX * 0.1
-                    }
-                    deg) rotateX($ {
-                        mouseY * 0.1
-                    }
-                    deg);
+                `perspective(1000px) rotateY(${mouseX * 0.1}deg) rotateX(${mouseY * -0.1}deg)`;
         });
 
-        // Initialize countdown
         updateCountdown();
         setInterval(updateCountdown, 1000);
-
-        // Add entrance animation delay
-        setTimeout(() => {
-            document.querySelector('.countdown-container').style.animation = 'none';
-        }, 1200);
     </script>
 </body>
-
 </html>
